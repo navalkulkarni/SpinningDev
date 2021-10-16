@@ -4,7 +4,7 @@ export default class EnterDailyElectricityUnits extends LightningElement {
 
     dateTime;
     units;
-
+    /*
     @api
     get dateTime(){
         return this.dateTime;
@@ -33,6 +33,6 @@ export default class EnterDailyElectricityUnits extends LightningElement {
     {
         console.log(event.target.value);
     }
-
+    */
 
 }
