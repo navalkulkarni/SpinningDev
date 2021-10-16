@@ -2,37 +2,28 @@ import { api, LightningElement } from 'lwc';
 
 export default class EnterDailyElectricityUnits extends LightningElement {
 
+    
     dateTime;
     units;
-    /*
-    @api
-    get dateTime(){
-        return this.dateTime;
-    }
 
-    set dateTime(value)
+    recordChange(event)
     {
-        this.dateTime = value;
+        const field = event.target.name;
+        if (field === 'datetime') {
+            this.dateTime = event.target.value;
+        } else if (field === 'units') {
+            this.units = event.target.value;
+        }
+    }
     
-    }
-
-    @api
-    get units(){
-        return this.units;
-    }
-
-    set units(value){
-        this.units = value;
-    }
-
-    setDateTime(event) {
-        console.log(event.target.value);
-    }
-
-    setUnits(event)
+    saveRecord(event)
     {
-        console.log(event.target.value);
+        console.log('Save Pressed'+ this.units + this.dateTime);
     }
-    */
+
+    cancelSave(event)
+    {
+        console.log('Cancel Pressed');
+    }
 
 }
