@@ -32,7 +32,7 @@ export default class EnterDailyElectricityUnits extends LightningElement {
                 this.deuId = deu.id;
                 this.dispatchEvent(
                     new ShowToastEvent({
-                        title: 'Success',
+                        title: 'Success!!!',
                         message: 'Record created',
                         variant: 'success',
                     }),
@@ -54,7 +54,9 @@ export default class EnterDailyElectricityUnits extends LightningElement {
     cancelSave(event)
     {
        console.log('new log');
-      console.log('cancel pressed  '+ this.template.querySelector('lightning-input[name="units"]').innerText + 'added');
+       console.log('cancel pressed added ');
+      this.template.querySelector('.datetime').value='';
+       this.template.querySelector('.units').value='';
       //this.template.querySelector('lightning-input[name="units"]').innerHTML;
        
        //this.template.querySelector('lightning-input[name="units"]').value='';
