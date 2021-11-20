@@ -1,17 +1,19 @@
 <template>
-    <div class="container">
-        <div class="slds-p-top_large slds-m-around_medium">
-            <h1 class="slds-text-heading_small">Enter Electricity Units</h1>
-            <p class="slds-text-body_regular">Select Date and Time, Enter Total Units and Click Save</p>
-        </div>
-        <div class="slds-m-around_medium">
-            <lightning-input type="datetime" class="datetime" name="datetime" label="Select Date and Time" required value={dateTime} onchange={recordChange} ></lightning-input>
-            <lightning-input class="units slds-size_small" type="text" name="units" label="Enter Total Units" required value={units} onchange={recordChange}></lightning-input>
-        </div>
-        <div class="slds-m-around_medium">
-            <lightning-button variant="brand" label="Save" title="Save" onclick={saveRecord}></lightning-button>
-            <lightning-button class="slds-m-horizontal_small" variant="neutral" label="Cancel" title="Cancel" onclick={cancelSave}></lightning-button>
-        </div>
-    </div>
+    <lightning-layout>
+        <lightning-layout-item class="container">
+            <div class="slds-p-top_large slds-m-around_medium">
+                <h1 class="slds-text-heading_small">Enter Electricity Units</h1>
+                <p class="slds-text-body_regular">Select Date and Time, Enter Total Units and Click Save</p>
+            </div>
+            <div class="slds-m-around_medium">
+                <lightning-input type="datetime" class="datetime" name="datetime" label="Select Date and Time" required value={dateTime} onchange={recordChange} ></lightning-input>
+                <lightning-input class="units slds-size_small" type="text" name="units" label="Enter Total Units" required value={units} onchange={recordChange}></lightning-input>
+            </div>
+            <div class="slds-m-around_medium">
+                <lightning-button variant="brand" label="Save" title="Save" onclick={saveRecord}></lightning-button>
+                <lightning-button class="slds-m-horizontal_small" variant="neutral" label="Cancel" title="Cancel" onclick={cancelSave}></lightning-button>
+            </div>
+        </lightning-layout-item>
+    </lightning-layout>
     
 </template>
