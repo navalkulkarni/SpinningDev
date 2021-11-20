@@ -1,8 +1,18 @@
 <template>
-    <lightning-layout>
-        <lightning-layout-item>
-            <lightning-input type="text" label="Enter Name"></lightning-input>
-            <lightning-button label="Add to list" onclick={handleClick}></lightning-button>
+    <lightning-layout vertical-align="center" padding="around-small">
+        <lightning-layout-item padding="around-small" size="6">
+            <lightning-input type="text" label="Enter Name" value={inputValue} class="workerName"></lightning-input>
+            <div class="slds-p-around_small">
+                <lightning-button  label="Add to list" onclick={handleClick}></lightning-button>
+            </div>
+        </lightning-layout-item>
+        <lightning-layout-item padding="around-small" size="6">
+            <p>Values entered by you are as follows:</p>
+            <ul>
+                <template for:each={listOfNames} for:item="element">
+                    <li key={element}>{element}</li>
+            </template>
+            </ul>
         </lightning-layout-item>
     </lightning-layout>
 </template>
