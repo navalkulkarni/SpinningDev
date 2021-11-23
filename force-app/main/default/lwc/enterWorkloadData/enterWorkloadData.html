@@ -1,11 +1,13 @@
 <template>
-    <lightning-layout vertical-align="center" padding="around-small">
+    <lightning-layout padding="horizontal-small" class="container">
         <lightning-layout-item padding="around-small" size="6">
             <lightning-input type="text" label="Enter Name" value={inputValue} class="workerName"></lightning-input>
             <div class="slds-p-around_small">
                 <lightning-button  label="Add to list" onclick={handleClick}></lightning-button>
             </div>
         </lightning-layout-item>
+    </lightning-layout>
+    <lightning-layout >
         <lightning-layout-item padding="around-small" size="6">
             <p>Values entered by you are as follows:</p>
             <ul>
@@ -13,6 +15,10 @@
                     <li key={element}>{element}</li>
             </template>
             </ul>
+
+            <div class="slds-p-around_small">
+                <lightning-button variant="neutral" label="Mark as Absent" onclick={handleAbsentClick}></lightning-button>
+            </div>
         </lightning-layout-item>
     </lightning-layout>
 </template>
