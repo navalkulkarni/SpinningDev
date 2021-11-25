@@ -5,20 +5,27 @@
             <div class="slds-p-around_small">
                 <lightning-button  label="Add to list" onclick={handleClick}></lightning-button>
             </div>
+            <div class="slds-p-around_small">
+                <lightning-button  label="Clear List" onclick={handleClearList}></lightning-button>
+            </div>
         </lightning-layout-item>
     </lightning-layout>
     <lightning-layout >
         <lightning-layout-item padding="around-small" size="6">
-            <p>Values entered by you are as follows:</p>
-            <ul>
-                <template for:each={listOfNames} for:item="element">
-                    <li key={element}>{element}</li>
-            </template>
-            </ul>
-
             <div class="slds-p-around_small">
                 <lightning-button variant="neutral" label="Mark as Absent" onclick={handleAbsentClick}></lightning-button>
             </div>
+            <p>Found following workers:</p>
+            <ul>
+                <template if:true={orgResult}>
+                    <template for:each={orgResult} for:item="element">
+                        <li key={element.Id}>{element.Name} {element.Worker_Id__c}</li>
+                    </template>
+                </template>
+            </ul>
+            <template if:true={error}>
+                <div class="error">{error}</div>
+            </template>
         </lightning-layout-item>
     </lightning-layout>
 </template>
