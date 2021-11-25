@@ -1,0 +1,17 @@
+<template>
+    <div class="slds-grid slds-gutters">
+        <div class="slds-col slds-size_1-of-3">
+            <h3>Winding Worker Salary Calculator</h3>
+            <lightning-input type="text" label="Enter Name" value={workerId} ></lightning-input>
+            <lightning-input type="text" label="Enter Count" value={yarnCount}></lightning-input>
+            <lightning-input type="text" label="Enter Month" value={monthName}></lightning-input>
+            <div class="slds-p-around_small">
+                <lightning-button  label="Calculate Salary" onclick={handleSalaryClick}></lightning-button>
+            </div>
+        </div>
+        <div class="slds-col slds-size_2-of-3">
+            <h2>Below is the summary of following Worker:</h2>
+            <p>Total Kgs of 40's Slub <span>{slub40Total}</span></p>
+        </div>
+    </div>
+</template>
