@@ -9,6 +9,9 @@
             <template if:true={workerDeptValidation}>
                 <p style="color: red;" >Please Enter Id of Winding Worker</p>
             </template>
+            <template if:true={workerError}>
+                <p style="color: red;" >Please Enter Id of Winding Worker</p>
+            </template>
             <lightning-button-group>
                 <lightning-button label="40 Slub" onclick={handleSalaryClick} class="slds-p-right_small slds-p_vertical-small" disabled={is40SlubDisabled} ></lightning-button>
                 <lightning-button label="50 Slub" onclick={handleSalaryClick} class="slds-p-left_small slds-p_vertical-small" disabled={is50SlubDisabled} ></lightning-button>

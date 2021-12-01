@@ -36,6 +36,7 @@ export default class WindingWorkerSalary extends LightningElement {
         this.workerId = this.template.querySelector('.WorkerIdInput').value;
         if(this.workerId >=100 && this.workerId <=999){
             this.workerIdValidation = false;
+            this.workerDeptValidation = false;
             this.Nt40Kg=0;
             this.slub40Kg=0;
             this.slub50Kg=0;
@@ -53,11 +54,13 @@ export default class WindingWorkerSalary extends LightningElement {
             getWorker({WorkerId : this.workerId})
             .then((result)=>{
                 this.worker = result;
-                if(this.worker.Department__c != 'Winding')
+                console.log(this.worker);
+                if(this.worker == null || this.worker.Department__c != 'Winding')
                     this.workerDeptValidation = true;
                 this.workerError = undefined;
             }).catch((error)=>{
                 this.workerError = error;
+                console.log(this.workerError);
                 this.worker = undefined;
             })
         }
