@@ -6,6 +6,9 @@
             <template if:true={workerIdValidation}>
                 <p style="color: red;" >Please Enter Valid Id</p>
             </template>
+            <template if:true={workerDeptValidation}>
+                <p style="color: red;" >Please Enter Id of Winding Worker</p>
+            </template>
             <lightning-button-group>
                 <lightning-button label="40 Slub" onclick={handleSalaryClick} class="slds-p-right_small slds-p_vertical-small" disabled={is40SlubDisabled} ></lightning-button>
                 <lightning-button label="50 Slub" onclick={handleSalaryClick} class="slds-p-left_small slds-p_vertical-small" disabled={is50SlubDisabled} ></lightning-button>
@@ -24,17 +27,22 @@
             
         </div>
         <div class="slds-col slds-size_2-of-4">
-            <template if:false={error}>
-            <h2>Below is the summary of following Worker:</h2>
             
-            <p>Total Kgs of 40's NT <span>{Nt40Kg}</span></p>
-            <p>Total Kgs of 40's Slub <span>{slub40Kg}</span></p>
-            <p>Total Kgs of 50's Slub <span>{slub50Kg}</span></p>
-            <p>Total Kgs of 62NT <span>{Nt62Kg}</span></p>
-            <p>Total Kgs of 50NT <span>{Nt50Kg}</span></p>
-            <p>Total Kgs of Bottom <span>{bottomKg}</span></p>
-            <p>Total Kgs of Mix Count <span>{mixCountKg}</span></p>
+            <h2>Below is the summary of following Worker:</h2>
+            <template if:true={worker}>
+                <p> Name : {worker.Name}</p>
+                <p> Department : {worker.Department__c}</p>
             </template>
+            <template if:true={countKgList}>
+                <p>Total Kgs of 40's NT <span>{Nt40Kg}</span></p>
+                <p>Total Kgs of 40's Slub <span>{slub40Kg}</span></p>
+                <p>Total Kgs of 50's Slub <span>{slub50Kg}</span></p>
+                <p>Total Kgs of 62NT <span>{Nt62Kg}</span></p>
+                <p>Total Kgs of 50NT <span>{Nt50Kg}</span></p>
+                <p>Total Kgs of Bottom <span>{bottomKg}</span></p>
+                <p>Total Kgs of Mix Count <span>{mixCountKg}</span></p>
+            </template>
+            
         </div>
     </div>
 </template>

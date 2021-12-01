@@ -22,6 +22,7 @@ export default class WindingWorkerSalary extends LightningElement {
     error;
     workerError;
     workerIdValidation= false;
+    workerDeptValidation = false;
     Nt40Kg=0;
     slub40Kg=0;
     slub50Kg=0;
@@ -49,9 +50,21 @@ export default class WindingWorkerSalary extends LightningElement {
             this.is50NTDisabled = false;
             this.isBottomDisabled = false;
             this.isMixCountDisabled = false;
+            getWorker({WorkerId : this.workerId})
+            .then((result)=>{
+                this.worker = result;
+                if(this.worker.Department__c != 'Winding')
+                    this.workerDeptValidation = true;
+                this.workerError = undefined;
+            }).catch((error)=>{
+                this.workerError = error;
+                this.worker = undefined;
+            })
         }
         else
-            this.workerIdValidation = true;
+        {
+                this.workerIdValidation = true;
+        }
 
             
     }
@@ -63,14 +76,7 @@ export default class WindingWorkerSalary extends LightningElement {
         //this.yarnCount = this.template.querySelector('.YarnCount').value;
         this.yarnCount = event.target.label;
         console.log(this.workerId);
-        getWorker({WorkerId : this.workerId})
-            .then((result)=>{
-                this.worker = result;
-                this.workerError = undefined;
-            }).catch((error)=>{
-                this.workerError = error;
-                this.worker = undefined;
-            })
+        
         createCountInformation({WorkerId:this.workerId,Month:this.monthName,Year:this.year,CountValue:this.yarnCount})
         .then(result => {
             console.log(result);
