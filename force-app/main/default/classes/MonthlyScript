@@ -1,0 +1,36 @@
+// Ringframe Workers
+
+List<Worker__c> ringWorkers = [SELECT Id,Name,Department__c FROM Worker__c WHERE Department__c='Ringframe Sider' OR Department__c='Ringframe Doffer' OR Department__c='Ringframe Jobber'];
+List<Monthly_Workload__c> decWorkers = new List<Monthly_Workload__c>();
+System.debug(ringWorkers.size());
+
+for(Worker__c rw: ringWorkers)
+{
+    Monthly_Workload__c mw = new Monthly_Workload__c();
+    mw.Worker__c = rw.Id;
+    mw.Month_Name__c = 'December';
+    mw.RecordTypeId='0125j000000XuaVAAS';
+    mw.Name = rw.Name + ' December 2021';
+    decWorkers.add(mw);
+}
+
+insert decWorkers;
+
+// Winding Workers
+
+List<Worker__c> windingWorkers = [SELECT Id,Name,Department__c FROM Worker__c WHERE Department__c='Winding' OR Department__c='Winding Jobber'];
+List<Monthly_Workload__c> decWorkers = new List<Monthly_Workload__c>();
+System.debug(windingWorkers.size());
+
+for(Worker__c rw: ringWorkers)
+{
+    Monthly_Workload__c mw = new Monthly_Workload__c();
+    mw.Worker__c = rw.Id;
+    mw.Month_Name__c = 'December';
+    mw.RecordTypeId='0125j000000XujrAAC';
+    mw.Name = rw.Name + ' December 2021';
+    decWorkers.add(mw);
+}
+
+insert decWorkers;
+System.debug(decWorkers.size());
