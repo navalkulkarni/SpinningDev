@@ -20,7 +20,7 @@ public with sharing class WindingWorkerSalaryCalculator {
     public static List<String> mixCount = new List<String>();
     public static List<String> millHoliday = new List<String>();
     
-    public static Map<String, List<String>> countToProdCollection = new Map<String,List<String>>{'40NT'=> NT40List,
+    public static Map<String, List<String>> countToProdCollection = new Map<String,List<String>>{'40 NT'=> NT40List,
                                                                                     '40 Slub'=>Slub40List,
                                                                                     '50 Slub'=>Slub50List, '62 NT'=>NT62List,
                                                                                    '50 NT'=>NT50List, 'Bottom'=>bottomCount,

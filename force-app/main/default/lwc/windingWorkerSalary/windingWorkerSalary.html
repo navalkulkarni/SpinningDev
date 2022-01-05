@@ -1,6 +1,6 @@
 <template>
-    <div class="slds-grid slds-gutters">
-        <div class="slds-col slds-size_2-of-4">
+    <div class="slds-grid slds-gutters slds-m-around_small" style="background-color:white;">
+        <div class="slds-col slds-size_2-of-4 slds-p-around_small">
             <h3>Winding Worker Salary Calculator</h3>
             <lightning-input type="number" label="Enter 3 digit Worker Id" value={workerId} onchange={initializeCounts} class="slds-size_1-of-3 WorkerIdInput"></lightning-input>
             <template if:true={workerIdValidation}>
@@ -29,14 +29,15 @@
             <lightning-input type="text" label="Enter Month" value={monthName} class="Month slds-size_1-of-3"></lightning-input>
             
         </div>
-        <div class="slds-col slds-size_2-of-4">
+        <div class="slds-col slds-size_2-of-4 slds-p-around_small">
             
             <h2>Below is the summary of following Worker:</h2>
             <template if:true={worker}>
-                <p> Name : {worker.Name}</p>
-                <p> Department : {worker.Department__c}</p>
+                <p> Name : <span style="color: darkorange;">{worker.Name}</span></p>
+                <p> Department : <span>{worker.Department__c}</span></p>
             </template>
-            <template if:true={countKgList}>
+            <template if:true={numberOfCountDays}>
+                <h4>{worker.Name} has produced {yarnCount} for {numberOfCountDays} Days.</h4>
                 <p>Total Kgs of 40's NT <span>{Nt40Kg}</span></p>
                 <p>Total Kgs of 40's Slub <span>{slub40Kg}</span></p>
                 <p>Total Kgs of 50's Slub <span>{slub50Kg}</span></p>
@@ -45,7 +46,9 @@
                 <p>Total Kgs of Bottom <span>{bottomKg}</span></p>
                 <p>Total Kgs of Mix Count <span>{mixCountKg}</span></p>
             </template>
-            
+            <template if:true={error}>
+                <h4>Sorry there is no data for {yarnCount}</h4>
+            </template>
         </div>
     </div>
 </template>

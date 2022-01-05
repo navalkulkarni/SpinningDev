@@ -16,8 +16,9 @@ export default class WindingWorkerSalary extends LightningElement {
     isBottomDisabled = false;
     isMixCountDisabled = false;
     yarnCount='40 Slub';
-    monthName = 'November';
+    monthName = 'December';
     countKgList;
+    numberOfCountDays = 0;
     year = 2021;
     error;
     workerError;
@@ -82,11 +83,20 @@ export default class WindingWorkerSalary extends LightningElement {
         
         createCountInformation({WorkerId:this.workerId,Month:this.monthName,Year:this.year,CountValue:this.yarnCount})
         .then(result => {
-            console.log(result);
-            console.log(JSON.stringify(result));
+            //console.log(result);
+            //console.log(JSON.stringify(result));
             this.countKgList = result;
-            this.calculateCountWiseKg(this.countKgList,this.yarnCount);
-            this.error = undefined;
+            if(this.countKgList[this.yarnCount].length > 0)
+            {
+                this.numberOfCountDays = this.countKgList[this.yarnCount].length;
+                console.log(this.numberOfCountDays);
+                this.calculateCountWiseKg(this.countKgList,this.yarnCount);
+                this.error = false;
+            }
+            else
+               { this.numberOfCountDays = 0; 
+                 this.error = true;
+            }
         }).catch((error)=>{
             this.error = error;
             //this.orgResult = undefined;
