@@ -1,0 +1,10 @@
+<template>
+    
+    <template if:true={contactList}>
+        <template for:each={contactList} for:item="element">
+            <li style="color: black;" key={element.Id}>{element.FirstName} {element.LastName}</li>
+        </template>
+    </template>
+    
+
+</template>

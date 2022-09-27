@@ -1,0 +1,28 @@
+<template>
+    <lightning-layout>
+        <lightning-layout-item>
+                <lightning-combobox
+                name="progress"
+                label="Template Name"
+                value=""
+                placeholder="Select Progress"
+                options={options}
+                onchange={handleChange}
+                class="slds-p-bottom_small"
+                required
+            ></lightning-combobox>
+            
+        </lightning-layout-item>
+    </lightning-layout>
+    <lightning-layout>
+        <lightning-layout-item>
+            <template for:each={selectedTemplate} for:item="selTemp">
+                <lightning-input key={selTemp.Id} label={selTemp.Name} class="tempField slds-p-bottom_x-small" value={inputValue}></lightning-input>
+            </template>
+
+            <lightning-button class="slds-p-around_medium" label="Save" variant="brand" onclick={handleSaveClick} ></lightning-button>
+        </lightning-layout-item>
+        
+    </lightning-layout>
+    
+</template>
