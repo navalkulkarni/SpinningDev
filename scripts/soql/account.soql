@@ -3,4 +3,6 @@
 //     query text and running the command:
 //     SFDX: Execute SOQL Query with Currently Selected Text
 
-SELECT Id, Name FROM Account
+
+SELECT Additional_Room__c, Area__c, Available_From__c, Carpet_area_sqft__c, Coverd_area_sqft__c, CreatedById, CreatedDate, Electricity_Status__c, Facing__c, Floor__c, For_Bachellor__c, For_Family__c, Furnished_Type__c, Furnishning_Available__c, Geo_Map__Latitude__s, Geo_Map__Longitude__s, Geo_Map__c, Id, IsDeleted, Landmark__c, LastActivityDate, LastModifiedById, LastModifiedDate, Location__c, Maintainance_Charge__c, Name, No_Of_Bath_Room__c, No_Of_Bed_Room__c, No_of_Balcony__c, OwnerId, Property_Description__c, Property_Main_Image__c, Property_Owner__c, Property_Video_URL__c, Rent__c, Security_Deposit__c, State__c, Status__c, SystemModstamp, Verified__c, Water_Availability__c, country__c, street__c
+  FROM Property__c

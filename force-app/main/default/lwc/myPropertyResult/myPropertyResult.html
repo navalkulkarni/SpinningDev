@@ -1,0 +1,22 @@
+<template>
+    <lightning-layout multiple-rows>
+        <template for:each={propertyList} for:item="property">
+            <lightning-layout-item size="6" key={property.Id} class="slds-p-horizontal_small">
+                <lightning-card >
+                    <h3 slot="title">
+                        <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+                        {property.Name}
+                    </h3>
+                    <div class="slds-grid">
+                        <div class="slds-col slds-size_5-of-12 slds-p-around_small">{property.Property_Main_Image__c}</div>
+                        <div class="slds-col slds-size_7-of-12 slds-p-around_small">
+                            <div>{property.No_Of_Bath_Room__c}</div>
+                            <div>{property.No_Of_Bath_Room__c}</div>
+                            <div>{property.No_Of_Bath_Room__c}</div>
+                        </div>
+                    </div>
+                </lightning-card>
+            </lightning-layout-item>
+        </template>
+    </lightning-layout>
+</template>
