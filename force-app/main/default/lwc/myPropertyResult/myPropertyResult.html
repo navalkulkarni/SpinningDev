@@ -4,15 +4,31 @@
             <lightning-layout-item size="6" key={property.Id} class="slds-p-horizontal_small">
                 <lightning-card >
                     <h3 slot="title">
-                        <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
-                        {property.Name}
+                        <lightning-icon icon-name="utility:agent_home" size="small"></lightning-icon>
+                        <span class="slds-p-around_medium">{property.Furnished_Type__c}</span>
                     </h3>
                     <div class="slds-grid">
-                        <div class="slds-col slds-size_5-of-12 slds-p-around_small">{property.Property_Main_Image__c}</div>
+                        <div class="slds-col slds-size_5-of-12 slds-p-around_small slds-table_bordered">
+
+                           <lightning-formatted-rich-text value={property.Property_Main_Image__c}></lightning-formatted-rich-text> 
+                        </div>
                         <div class="slds-col slds-size_7-of-12 slds-p-around_small">
-                            <div>{property.No_Of_Bath_Room__c}</div>
-                            <div>{property.No_Of_Bath_Room__c}</div>
-                            <div>{property.No_Of_Bath_Room__c}</div>
+                            <div>Property Rent : {property.Rent__c}</div>
+                            <div>Number of bedrooms : {property.No_Of_Bed_Room__c}</div>
+                            <div>Number of bathrooms : {property.No_Of_Bath_Room__c}</div>
+                            <div class="slds-m-top_medium">
+                                <lightning-button variant="brand" class="slds-m-right_small" 
+                                                  label="Owner Details" value={property.Property_Owner__c}>
+                                </lightning-button>
+                                
+                                <lightning-button variant="brand" class="slds-m-right_small" label="Enquiry" value={property.Id} >
+
+                                </lightning-button>
+                                
+                                <lightning-button variant="brand" class="slds-m-right_small" label="Property Details" value={property.Id}>
+
+                                </lightning-button>
+                            </div>
                         </div>
                     </div>
                 </lightning-card>
@@ -20,3 +36,4 @@
         </template>
     </lightning-layout>
 </template>
+
