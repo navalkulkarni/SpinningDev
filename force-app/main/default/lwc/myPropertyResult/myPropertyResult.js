@@ -1,4 +1,4 @@
-import { wire,LightningElement } from 'lwc';
+import { wire,LightningElement,track } from 'lwc';
 import getPropertyDetails from '@salesforce/apex/PropertyController.getLatestProperty';
 export default class MyPropertyResult extends LightningElement {
 
@@ -7,6 +7,9 @@ export default class MyPropertyResult extends LightningElement {
 
     ownerId;
     openOwnerModal = false;
+    openEnquiryModal = false;
+
+    @track propertyId;
 
     @wire(getPropertyDetails)
     wiredProperties ({error, data}) {
@@ -37,5 +40,15 @@ export default class MyPropertyResult extends LightningElement {
     closeOwnerModal(event)
     {
         this.openOwnerModal = false;
+    }
+
+    showEnquiryForm(event){
+        this.propertyId = event.target.value;
+        this.openEnquiryModal = true;
+    }
+
+    closeEnquiryModal(event)
+    {
+        this.openEnquiryModal = false;
     }
 }

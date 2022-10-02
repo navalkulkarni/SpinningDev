@@ -2,7 +2,7 @@
     <lightning-layout multiple-rows>
         <template for:each={propertyList} for:item="property">
             <lightning-layout-item size="6" key={property.Id} class="slds-p-horizontal_small">
-                <lightning-card >
+                <lightning-card>
                     <h3 slot="title">
                         <lightning-icon icon-name="utility:agent_home" size="small"></lightning-icon>
                         <span class="slds-p-around_medium">{property.Furnished_Type__c}</span>
@@ -10,23 +10,25 @@
                     <div class="slds-grid">
                         <div class="slds-col slds-size_5-of-12 slds-p-around_small slds-table_bordered">
 
-                           <lightning-formatted-rich-text value={property.Property_Main_Image__c}></lightning-formatted-rich-text> 
+                            <lightning-formatted-rich-text value={property.Property_Main_Image__c}>
+                            </lightning-formatted-rich-text>
                         </div>
                         <div class="slds-col slds-size_7-of-12 slds-p-around_small">
                             <div>Property Rent : {property.Rent__c}</div>
                             <div>Number of bedrooms : {property.No_Of_Bed_Room__c}</div>
                             <div>Number of bathrooms : {property.No_Of_Bath_Room__c}</div>
                             <div class="slds-m-top_medium">
-                                <lightning-button variant="brand" class="slds-m-right_small" 
-                                                  label="Owner Details" value={property.Property_Owner__c}
-                                                  onclick={showOwnerDetails}>
+                                <lightning-button variant="brand" class="slds-m-right_small" label="Owner Details"
+                                    value={property.Property_Owner__c} onclick={showOwnerDetails}>
                                 </lightning-button>
-                                
-                                <lightning-button variant="brand" class="slds-m-right_small" label="Enquiry" value={property.Id} >
+
+                                <lightning-button variant="brand" class="slds-m-right_small" label="Enquiry"
+                                    value={property.Id} onclick={showEnquiryForm}>
 
                                 </lightning-button>
-                                
-                                <lightning-button variant="brand" class="slds-m-right_small" label="Property Details" value={property.Id}>
+
+                                <lightning-button variant="brand" class="slds-m-right_small" label="Property Details"
+                                    value={property.Id}>
 
                                 </lightning-button>
                             </div>
@@ -37,25 +39,46 @@
         </template>
         <!-- Owner details section start-->
         <template if:true={openOwnerModal}>
-        <div style="margin-top: 5%">
-            <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+            <div style="margin-top: 5%">
+                <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
                     <div class="slds-modal__container">
-                            <header class="slds-modal__header" >
-                                    
-                                    <lightning-card title="Property Owner Details" icon-name="standard:people">
-                                            <lightning-button-icon class="slds-modal__close" icon-name="utility:close" onclick={closeOwnerModal}></lightning-button-icon>      
-                                    </lightning-card>
-                            </header>
-                            <div class="slds-modal__content slds-p-around_medium">
-                                    <c-my-property-owner property-owner-id={ownerId}></c-my-property-owner>
-                                    <!--<lightning-button variant="success" label="Cancel" class="slds-m-left_x-small"  onclick={closeOwnerModal}></lightning-button>                           -->
-                                    <!--<lightning-button-icon class="slds-modal__close" icon-name="utility:close" onclick={closeOwnerModal}></lightning-button-icon>-->
-                            </div>
+                        <header class="slds-modal__header">
+
+                            <lightning-card title="Property Owner Details" icon-name="standard:people">
+                                <lightning-button-icon class="slds-modal__close" icon-name="utility:close"
+                                    onclick={closeOwnerModal}></lightning-button-icon>
+                            </lightning-card>
+                        </header>
+                        <div class="slds-modal__content slds-p-around_medium">
+                            <c-my-property-owner property-owner-id={ownerId}></c-my-property-owner>
+                            <!--<lightning-button variant="success" label="Cancel" class="slds-m-left_x-small"  onclick={closeOwnerModal}></lightning-button>                           -->
+                            <!--<lightning-button-icon class="slds-modal__close" icon-name="utility:close" onclick={closeOwnerModal}></lightning-button-icon>-->
+                        </div>
                     </div>
-            </section>
-        </div>
-    
+                </section>
+            </div>
+
+        </template>
+
+        <!-- Enquiry section start-->
+        <template if:true={openEnquiryModal}>
+            <div style="margin-top: 5%">
+                <section role="dialog" tabindex="-1" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container">
+
+
+                        <lightning-button-icon class="slds-modal__close" icon-name="utility:close"
+                            onclick={closeEnquiryModal}></lightning-button-icon>
+
+                        <div class="slds-modal__content slds-p-around_medium">
+                            <c-my-property-enquiry property-id={propertyId}></c-my-property-enquiry>
+                            <!--<lightning-button variant="success" label="Cancel" class="slds-m-left_x-small"  onclick={closeOwnerModal}></lightning-button>                           -->
+                            <!--<lightning-button-icon class="slds-modal__close" icon-name="utility:close" onclick={closeOwnerModal}></lightning-button-icon>-->
+                        </div>
+                    </div>
+                </section>
+            </div>
+
         </template>
     </lightning-layout>
 </template>
-
