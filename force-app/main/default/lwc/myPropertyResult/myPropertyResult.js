@@ -5,6 +5,9 @@ export default class MyPropertyResult extends LightningElement {
     propertyList;
     error;
 
+    ownerId;
+    openOwnerModal = false;
+
     @wire(getPropertyDetails)
     wiredProperties ({error, data}) {
         if (error) {
@@ -24,4 +27,15 @@ export default class MyPropertyResult extends LightningElement {
         }));
     }
 
+    showOwnerDetails(event)
+    {
+        this.ownerId = event.target.value;
+        console.log(this.ownerId);
+        this.openOwnerModal = true;
+    }
+
+    closeOwnerModal(event)
+    {
+        this.openOwnerModal = false;
+    }
 }
