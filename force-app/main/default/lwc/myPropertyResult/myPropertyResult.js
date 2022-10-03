@@ -1,5 +1,11 @@
 import { wire,LightningElement,track } from 'lwc';
 import getPropertyDetails from '@salesforce/apex/PropertyController.getLatestProperty';
+import { NavigationMixin} from 'lightning/navigation';
+import getSearchedProperty from '@salesforce/apex/PropertyDetais.getSearchedProperty';
+import { registerListener, unregisterAllListeners } from 'c/pubsub';
+import { CurrentPageReference } from 'lightning/navigation';
+import {ShowToastEvent} from 'lightning/platformShowToastEvent';
+
 export default class MyPropertyResult extends LightningElement {
 
     propertyList;
@@ -50,5 +56,28 @@ export default class MyPropertyResult extends LightningElement {
     closeEnquiryModal(event)
     {
         this.openEnquiryModal = false;
+    }
+
+    @wire(CurrentPageReference) pageRef;
+    connectedCallback(){
+        registerListener("handleLocFilterChange", this.handleLocFilterChange,this) ;   
+    }
+    disconnectedCallback(){
+        unregisterAllListeners(this);    
+    }
+    handleLocFilterChange(locchange){
+        this.locFilter = locchange;
+        getSearchedProperty({
+            location: this.locFilter,
+            bedroom : this.bedroomFilter,
+            bathroom :this.bathroomFilter,
+            maxbudget: this.budgetFilter
+        })
+        .then(result=>{
+            this.properties = result;
+        })
+        .catch(error =>{
+            this.showToast(error);
+        });
     }
 }

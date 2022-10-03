@@ -1,0 +1,51 @@
+<template>
+    <lightning-layout class="slds-grid slds-gutters slds-m-around_small" style="background-color: blanchedalmond;">
+
+        <div class="slds-col slds-size_3-of-12 slds-p-around_medium">
+            <div style="width: 75%;">
+                <span>
+                    <lightning-combobox name="locality" label="Locality" value={location} placeholder="Select Location"
+                        options={locationOptions} onchange={handleLocationChange}>
+
+                    </lightning-combobox>
+                </span>
+            </div>
+
+        </div>
+        <div class="slds-col slds-size_3-of-12 slds-p-around_medium">
+            <div style="width: 75%;">
+                <span>
+                    <lightning-combobox name="noOfBedroom" label="No. Of bedroom" value={noOfBedrooms}
+                        placeholder="Select No. of Bedrooms" options={bedroomCountOptions}
+                        onchange={handleBedroomChange}>
+
+                    </lightning-combobox>
+                </span>
+            </div>
+
+        </div>
+        <div class="slds-col slds-size_3-of-12 slds-p-around_medium">
+            <div style="width: 75%;">
+                <span>
+                    <lightning-combobox name="noOfBathroom" label="No. Of Bathroom" value={noOfBathrooms}
+                        placeholder="Select No. of Bathooms" options={bathroomCountOptions}
+                        onchange={handleBathroomChange}>
+
+                    </lightning-combobox>
+                </span>
+            </div>
+
+        </div>
+        <div class="slds-col slds-size_3-of-12 slds-p-around_medium">
+            <div style="width: 75%;">
+                <span>
+                    <lightning-input name="maximum budget" label="Maximum Budget" value={budgetValue}
+                        onchange={handleBudgetChange}></lightning-input>
+                </span>
+            </div>
+
+        </div>
+
+
+    </lightning-layout>
+</template>
