@@ -22,7 +22,9 @@ export default class MyPropertyFilter extends LightningElement {
             {label: '1',value:'1'},
             {label: '2',value:'2'},
             {label: '3',value:'3'},
-            {label: '4',value:'4'}
+            {label: '4',value:'4'},
+            {label: '5',value:'5'},
+            {label: '6',value:'6'}
         ]
     }
     get bathroomCountOptions(){
@@ -30,7 +32,9 @@ export default class MyPropertyFilter extends LightningElement {
             {label: '1',value:'1'},
             {label: '2',value:'2'},
             {label: '3',value:'3'},
-            {label: '4',value:'4'}
+            {label: '4',value:'4'},
+            {label: '5',value:'5'},
+            {label: '6',value:'6'}
         ]
     }
 
@@ -43,17 +47,17 @@ export default class MyPropertyFilter extends LightningElement {
     handleBedroomChange(event){
         this.noOfBedrooms = parseInt(event.target.value);
         console.log(this.noOfBedrooms);
-        fireEvent(this.pageRef, "handleLocBedRoomChange", this.noOfBedRooms);
+        fireEvent(this.pageRef, "handleBedRoomChange", this.noOfBedRooms);
     }
     handleBathroomChange(event){
         this.noOfBathrooms = parseInt(event.target.value);
         console.log(this.noOfBathrooms);
-        fireEvent(this.pageRef, "handleLocBathRoomChange", this.noOfBathrooms);
+        fireEvent(this.pageRef, "handleBathRoomChange", this.noOfBathrooms);
     }
     handleBudgetChange(event){
         this.budgetValue = parseInt(event.target.value);
         console.log(this.budgetValue);
-        fireEvent(this.pageRef, "handleLocBudgetChange", this.budgetValue);
+        fireEvent(this.pageRef, "handleBudgetChange", this.budgetValue);
     }
 
 }
